@@ -1,0 +1,121 @@
+﻿
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <h1>Hi @ViewBag.CurUser.First_name @ViewBag.CurUser.Last_name!</h1>
+    <hr>
+    <br>
+    <button><a href="New">Create Event</a></button>
+    <h2>My Events</h2>
+    <div class="Box">
+        <table id="t01">
+            <tr>
+                <th>Title</th>
+                <th>Date & Time</th>
+                <th>Created By</th>
+                <th># of Participants</th>
+                <th>Action</th>
+            </tr>
+            @foreach(var d in @ViewBag.MyEvent)
+            {
+                var tracker = 0;
+                @foreach(var a in @d.Participants)
+                {
+                    @if(@a.UserId == @ViewBag.CurUser.UserId)
+                    {
+                        tracker++;
+                        break;
+                    }
+                }
+                @if(tracker == 1)
+                {
+                    <tr>
+                        <td><a href="/Show/@d.ActivityId">@d.Title</a></td>
+                        <td>@d.Date.ToString("MM/dd") at @d.Time.ToString("hh:mm tt")</td>  
+                        <td>@d.CreaterName</td>
+                        <td>@d.Participants.Count</td>
+                        <td>@if(@ViewBag.CurUser.UserId == d.UserId)
+                            {
+                                <a href="Delete/@d.ActivityId">Delete</a>
+                            }
+                            else
+                            {
+                                var count = 0;
+                                @foreach(var c in @ViewBag.NewNew.Activities)
+                                {
+                                    @if(@d.ActivityId == @c.ActivityId)
+                                    {
+                                        count++;
+                                        break;
+                                    }
+                                }
+                                @if(count == 1)
+                                {
+                                    <a href="Leave/@d.ActivityId">Leave</a>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <br>
+    <h2>All Events</h2>
+    <div class="Box">
+        <table id="t01">
+            <tr>
+                <th>Title</th>
+                <th>Date & Time</th>
+                <th>Created By</th>
+                <th># of Participants</th>
+                <th>Action</th>
+            </tr>
+            @foreach(var d in @ViewBag.All)
+            {
+                var tracker = 0;
+                @foreach(var a in @d.Participants)
+                {
+                    @if(@a.UserId == @ViewBag.CurUser.UserId)
+                    {
+                        tracker++;
+                        break;
+                    }
+                }
+                @if(tracker == 0)
+                {
+                    <tr>
+                        <td><a href="/Show/@d.ActivityId">@d.Title</a></td>
+                        <td>@d.Date.ToString("MM/dd") at @d.Time.ToString("hh:mm tt")</td>  
+                        <td>@d.CreaterName</td>
+                        <td>@d.Participants.Count</td>
+                        <td>@if(@ViewBag.CurUser.UserId == d.UserId)
+                            {
+                                <a href="Delete/@d.ActivityId">Delete</a>
+                            }
+                            else
+                            {
+                                var count = 0;
+                                @foreach(var c in @ViewBag.NewNew.Activities)
+                                {
+                                    @if(@d.ActivityId == @c.ActivityId)
+                                    {
+                                        count++;
+                                        break;
+                                    }
+                                }
+                                @if(count == 1)
+                                {
+                                    <a href="Leave/@d.ActivityId">Leave</a>
+                                }
+                                else{
+                                    <a href="Join/@d.ActivityId">Join</a>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+</div>

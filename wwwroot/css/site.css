@@ -1,0 +1,135 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+form{
+    display: inline-block;
+    vertical-align: top;
+}
+.error{
+    color: red;
+}
+.form1
+{
+    height: 400px;
+    margin-left: 130px;
+}
+.form2{
+    margin-left: 250px;
+    height: 400px;
+
+}
+table#t01{
+    width:100%;
+    font-size: 17px;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+    text-align: center;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+   text-align: center;
+}
+table#t01 th {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+.Box2
+{
+    display: inline-block;
+    width: 500px;
+    vertical-align: top;
+    height: 600px;
+}
+.Box3
+{
+    display: inline-block;
+    width: 500px;
+    vertical-align: top;
+    height: 600px;
+}
+.Part1
+{
+    width: 400px; 
+    height: 300px; 
+    font-size: 17px; 
+    overflow: auto;
+}
+.Desc1
+{
+    margin-left: 20px; 
+    Width: 500px; 
+    Height: 200px; 
+    overflow: auto;
+    word-wrap: break-word;
+}
+.banner
+{
+    align-content: center;
+    Width: 1140px; 
+    Height: 420px; 
+}
+#myCarousel h1
+{
+    text-align: center;
+    font-family: Verdana;
+}
+.Box
+{
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+}
+.chat
+{
+    width: 100%;
+    height: 550px;
+    border: 1px solid black;
+    overflow: auto;
+    padding: 5px;
+}
+.msgbox
+{
+    max-width: 430px;
+    width: 430px;
+    height: 30px;
+}
+body
+{
+    background-image: url(../images/background.jpg);
+}

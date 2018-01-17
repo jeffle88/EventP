@@ -1,0 +1,40 @@
+﻿@model Project.Models.CreateUser
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <h1>Welcome to Personal Event Planner!</h1>
+    <img class="banner" src="https://d3ccuprjuqkp1j.cloudfront.net/BlogImages/2017/07-12-event-planning-made-easy/StickerYou_Blog_EventPlanningMadeEasy.jpg">
+    <br>
+    <form class="form1" asp-controller="Home" asp-action="register" method="POST">
+        <h3>Register</h3>
+        <p>Email: <input asp-for="Email" style="margin-left: 120px;"></p>
+        @if(ViewBag.InvalidEmail == true)
+        {
+            <label class="error">Email have already been used</label>
+        }
+        <span class="error" asp-validation-for="Email"></span>
+        <p>First Name: <input asp-for="First_name" style="margin-left: 86px;"></p>
+        <span class="error" asp-validation-for="First_name"></span>
+        <p>Last Name: <input asp-for="Last_name" style="margin-left: 86px;"></p>
+        <span class="error" asp-validation-for="Last_name"></span>
+
+        <p>Password: <input asp-for="Password" style="margin-left: 92px;"></p>
+        <span class="error" asp-validation-for="Password"></span>
+        <p>Confirmation Password: <input asp-for="C_password" style="margin-left: 10px;"></p>
+        <span class="error" asp-validation-for="C_password"></span>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <form class="form2" asp-controller="Home" asp-action="Login" method="POST">
+        <h3>Login</h3>
+        <p>Email: <input type="text" name="Email" style="margin-left: 57px;"></p>
+
+        <p>Password: <input type="password" name="password" style="margin-left: 31px;"></p>
+        @if(ViewBag.Invalid == false)
+        {
+            <label class="error">Username or Password is incorrect, Please try again</label>
+        }
+        <br>
+        <input type="submit" value="Login">
+    </form>
+</div>

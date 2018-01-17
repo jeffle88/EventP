@@ -1,0 +1,30 @@
+﻿@model Project.Models.Activity
+
+<div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <h1>Personal Event Creater</h1>
+    <hr>
+    <h3>Create an Event!</h3>
+    <br>
+    <form asp-controller="Project" asp-action="Create" method="POST">
+        <p>Title: <input asp-for="Title" style="margin-left: 63px;"></p>
+        <span class="error" asp-validation-for="Title"></span>
+
+        <p>Time: <input asp-for="Time" style="margin-left: 60px;"></p>
+        <span class="error" asp-validation-for="Time"></span>
+
+        <p>Date: <input type="date" asp-for="Date" style="margin-left: 60px;" min="2018-01-07"></p>
+        <span class="error" asp-validation-for="Date"></span>
+
+        <p>Duration: <input asp-for="Duration" style="margin-left: 37px; overflow: scroll;" wrap="hard"> 
+            <select asp-for="Metric">
+                <option value="Days">Days</option>
+                <option value="Hours">Hours</option>
+                <option value="Minutes">Minutes</option>
+            </select></p>
+        <span class="error" asp-validation-for="Duration"></span>
+
+        <p>Description: <textarea class="Desc1" asp-for="Description"></textarea></p>
+        <span class="error" asp-validation-for="Description"></span><br>
+        <input type="submit" value="Create Activity">
+    </form>
+</div>

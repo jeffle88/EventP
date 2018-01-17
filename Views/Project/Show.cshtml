@@ -1,0 +1,83 @@
+﻿@model Project.Models.Chat
+
+<div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <h1 class="header">@ViewBag.ShowOne.Title</h1>
+    <br>
+    @if(@ViewBag.ShowOne.Participants.Count != 0)
+    {
+        var boo = false;
+        @foreach(var a in @ViewBag.ShowOne.Participants)
+        {
+            @if(@a.UserId == @ViewBag.CurUser.UserId) 
+            {
+                boo = true;
+                break;
+            }
+        }
+        @if(@ViewBag.ShowOne.UserId == @ViewBag.CurUser.UserId){
+            <button>
+                <a href="/Delete/@ViewBag.ShowOne.ActivityId">Delete</a>
+            </button>
+        }
+        else if(boo == true)
+        {
+            <button>
+                <a href="/Leave/@ViewBag.ShowOne.ActivityId">Leave</a>
+            </button>
+        }
+        else{        
+            <button>
+                <a href="/Join/@ViewBag.ShowOne.ActivityId">Join</a>
+            </button>
+        }
+    }
+    else if(@ViewBag.ShowOne.UserId == @ViewBag.CurUser.UserId)
+    {
+        <button>
+            <a href="/Delete/@ViewBag.ShowOne.ActivityId">Delete</a>
+        </button>
+    }
+    else
+    {
+        <button>
+            <a href="/Join/@ViewBag.ShowOne.ActivityId">Join</a>
+        </button>
+    }
+    <hr>
+    <div class="Box2">
+        <h4>Event Start Time: @ViewBag.ShowOne.Date.ToString("MM/dd") at @ViewBag.ShowOne.Time.ToString("hh:mm tt")</h4>
+        <h4>Created By: @ViewBag.ShowOne.CreaterName</h4>
+        <br>
+        <h4>Description</h4>
+        <p style="font-size: 17px;">@ViewBag.ShowOne.Description</p>
+        <br>
+        <h4>Participants:</h4>
+        <div class="Part1">
+            @if(@ViewBag.ShowOne.Participants.Count == 0)
+            {
+                <p>No participants yet</p>
+            }
+            else
+            {
+                foreach(var a in @ViewBag.ShowOne.Participants)
+                {
+                    <p>@a.Name</p>
+                }
+            }
+        </div>
+    </div>
+    <div class="Box3">
+        <div class="chat">
+            @foreach(var c in @ViewBag.MessageBoard)
+            {
+                <p>@c.Name: @c.Message</p>
+            }
+        </div>
+        <br>
+        <form asp-controller="Project" asp-action="Chat" asp-route-id="@ViewBag.ShowOne.ActivityId" method="POST">
+            <input class="msgbox" asp-for="Message" placeholder="Enter a msg...">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</div>
